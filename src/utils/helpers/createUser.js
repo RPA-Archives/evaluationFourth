@@ -1,11 +1,12 @@
 const Models = require('../../../models');
 
-const fetchUserDetails = username => Models.users.findAll({
+const createUser = username => Models.users.create({
   where: {
     username,
+    score: 0,
   },
 })
   .then(user => user)
   .catch(err => null);
 
-module.exports = fetchUserDetails;
+module.exports = createUser;
