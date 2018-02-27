@@ -11,7 +11,10 @@ Server.connection({
 Server.route(routes);
 
 if (!module.parent) {
-  Server.start();
+  Server.start((err) => {
+    if (err) throw err;
+    console.log('Server started at port number 8080');
+  });
 }
 
 module.exports = Server;
