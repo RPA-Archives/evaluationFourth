@@ -1,15 +1,16 @@
 const Models = require('../../models');
+const getFormPayload = require('../utils/helpers/getFormPayload');
 
 module.exports = {
   method: 'POST',
   path: '/score',
   handler: (req, res) => {
-    const data = req.payload;
+    const data = getFormPayload(req);
     Models.questions.findAll()
       .then((allQuestions) => {
         Models.answers.findAll({
           where: {
-            userId: data.userId,
+            userId: data,
           },
         }).then((allUserAnswers) => {
           let score = 0;
@@ -28,12 +29,22 @@ module.exports = {
             },
             {
               where: {
-                userId: data.userId,
+                userId: data,
               },
             },
           )
             .then(() => {
-              res('done').code(200);
+              Models.users.findAll({
+                order: [
+                  ['score', 'DESC'],
+                ],
+                limit: 10,
+              })
+                .then(result => result.map(user => ({
+                  username: user.dataValues.username,
+                  score: user.dataValues.score,
+                })))
+                .then(sorted => res(sorted).code(200));
             });
         });
       });

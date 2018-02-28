@@ -1,11 +1,12 @@
 const fetchUserDetails = require('../utils/helpers/fetchUserDetails');
 const createUser = require('../utils/helpers/createUser');
+const getFormPayload = require('../utils/helpers/getFormPayload');
 
 module.exports = {
   method: 'POST',
   path: '/login',
   handler: (req, res) => {
-    const formData = req.payload;
+    const formData = getFormPayload(req);
     fetchUserDetails(formData.username)
       .then((user) => {
         if (user.length === 0) {

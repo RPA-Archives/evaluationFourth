@@ -1,10 +1,11 @@
 const Models = require('../../models');
+const getFormPayload = require('../utils/helpers/getFormPayload');
 
 module.exports = {
   method: 'POST',
   path: '/answer',
   handler: (req, res) => {
-    const data = req.payload;
+    const data = getFormPayload(req);
     Models.answers.findAll({
       where: {
         questionId: data.questionId,
