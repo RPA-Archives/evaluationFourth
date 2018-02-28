@@ -11,11 +11,14 @@ module.exports = {
         userId: reqData.userId,
       },
     })
-      .then(result =>
-        result.map(eachAnswer => ({
-          questionId: eachAnswer.questionId,
-          answer: eachAnswer.answer,
-        })))
+      .then((result) => {
+        const array = {};
+        for (let i = 0; i < result.length; i += 1) {
+          console.log(result[i].dataValues.questionId, result[i].dataValues.answer);
+          array[result[i].dataValues.questionId] = result[i].dataValues.answer;
+        }
+        return array;
+      })
       .then(result1 => res(result1));
   },
 };
