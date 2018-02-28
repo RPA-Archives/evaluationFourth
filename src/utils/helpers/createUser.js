@@ -5,6 +5,6 @@ const createUser = username => Models.users.create({
   score: 0,
 })
   .then(user => user)
-  .catch(err => null);
+  .catch(() => null);
 
 module.exports = createUser;

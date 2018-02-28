@@ -1,7 +1,7 @@
 const Server = require('../src/server');
 
-describe('Test for Server', ()=>{
-  test('should give success message', (done)=> {
+describe('Test for Server', () => {
+  test('should give success message', (done) => {
     const options = {
       method: 'GET',
       url: '/',
@@ -10,5 +10,6 @@ describe('Test for Server', ()=>{
       expect(res.payload).toBe('Server Running');
       done();
     });
-  })
-})
+  });
+});
+

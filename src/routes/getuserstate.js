@@ -14,7 +14,6 @@ module.exports = {
       .then((result) => {
         const array = {};
         for (let i = 0; i < result.length; i += 1) {
-          console.log(result[i].dataValues.questionId, result[i].dataValues.answer);
           array[result[i].dataValues.questionId] = result[i].dataValues.answer;
         }
         return array;

@@ -12,7 +12,6 @@ module.exports = {
         if (user.length === 0) {
           createUser(formData.username)
             .then((details) => {
-              console.log('true');
               res(details.dataValues).code(201);
             });
         } else {

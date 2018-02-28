@@ -1,4 +1,3 @@
-const Models = require('../../models');
 const Server = require('../../src/server');
 
 describe('Test for getuserdetails API with new user', () => {

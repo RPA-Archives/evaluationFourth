@@ -1,4 +1,3 @@
-const getQuestions = require('../../src/utils/helpers/getQuestions');
 const populate = require('../../src/utils/helpers/populate');
 const Models = require('../../models');
 const Server = require('../../src/server');

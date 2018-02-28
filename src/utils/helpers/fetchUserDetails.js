@@ -6,6 +6,6 @@ const fetchUserDetails = username => Models.users.findAll({
   },
 })
   .then(user => user)
-  .catch(err => null);
+  .catch(() => null);
 
 module.exports = fetchUserDetails;
